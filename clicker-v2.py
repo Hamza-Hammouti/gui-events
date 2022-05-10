@@ -53,13 +53,6 @@ def multiplier(e):
     number = round(number,2)
     button2.config(text=number)
 
-def update(self):
-
-    self.label.configure(text=self.time_string())
-
-    # schedule another timer
-    self.label.after(1000, self.update)
-
 button1 = tkinter.Button(window, text ="Up", width="30", command=up)
 button1.grid(row=0, column=0, padx=15, pady=15)
 button2 = tkinter.Label(window, text = number, width="30")
