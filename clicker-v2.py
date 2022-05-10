@@ -9,7 +9,7 @@ number = 0
 kleur = 0
 status = ""
 
-def up():
+def up(e):
     global number, kleur, status
     number += 1
     status = "up"
@@ -21,7 +21,7 @@ def up():
         kleur = 0
     button2["text"] = (number)
 
-def down():
+def down(e):
     global number, kleur, status
     number -= 1
     status = "down"
@@ -53,11 +53,17 @@ def multiplier(e):
     number = round(number,2)
     button2.config(text=number)
 
-button1 = tkinter.Button(window, text ="Up", width="30", command=up)
+window.bind('+', up)
+window.bind('<Up>', up)
+window.bind('-', down)
+window.bind('<Down>', down)
+window.bind("<space>", multiplier)
+
+button1 = tkinter.Button(window, text ="Up", width="30", command=lambda: [up(1)])
 button1.grid(row=0, column=0, padx=15, pady=15)
 button2 = tkinter.Label(window, text = number, width="30")
 button2.grid(row=1, column=0, padx=15, pady=15)
-button3 = tkinter.Button(window, text ="Down", width="30", command=down)
+button3 = tkinter.Button(window, text ="Down", width="30", command=lambda: [down(1)])
 button3.grid(row=2, column=0, padx=15, pady=15)
 
 button2.bind("<Enter>", on_enter)
